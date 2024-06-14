@@ -12,7 +12,7 @@ import {Checkbox} from "@mui/material";
 // 3. The map function is called to assign each array item with a key
 // 4. Think of lines 14-23 as a loop. For each todo in the todo list, we want to give the list item
 // a key, and it's own card shown in the UI
-const Todos = ({ todos, deleteTodo }) => {
+const Todos = ({ todos, deleteTodo, deleteAll }) => {
   //alert(this.props.)
   //this.props.deleteTodo(id)
   //alert(todos.deleteTodo)
@@ -30,7 +30,9 @@ const Todos = ({ todos, deleteTodo }) => {
                 <ListItemText primary={todo.content} secondary={todo.date}/>
               </ListItemButton>
           </Card>
+    
         </Grid>
+        
       );
     })
   ) : (
@@ -40,6 +42,7 @@ const Todos = ({ todos, deleteTodo }) => {
   return (
     <div className="todoCollection" style={{ padding: "10px" }}>
       {todoList}
+      <button id='clear' onClick={() =>deleteAll(todos)}>Clear All</button>
     </div>
   );
 };

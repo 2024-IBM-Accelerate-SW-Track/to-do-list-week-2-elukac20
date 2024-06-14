@@ -8,6 +8,8 @@ class AddTodo extends Component {
     
     this.state = {
       content: "",
+      pre:"",
+      acc:"",
       date:"",
     };
   }
@@ -15,8 +17,24 @@ class AddTodo extends Component {
   // "event" is the defined action a user takes. In this case, the event is triggered when the user types something
   // into the text field.
   handleChange = (event) => {
+    let val = event.target.value;
+    let inpName = event.target.name;
+    if(inpName === 'content'){
+      this.setState({
+        content: val,
+      });
+    }
+    if(inpName === 'pre'){
+      this.setState({
+        pre: val,
+      });
+    }
+    if(inpName === 'acc'){
+      this.setState({
+        acc: val
+      });
+    }
     this.setState({
-      content: event.target.value,
       date:Date().toLocaleString('en-US')
     });
   };
@@ -30,7 +48,9 @@ class AddTodo extends Component {
       this.props.addTodo(this.state);
       this.setState({
         content: "",
-        date:""
+        date:"",
+        pre:"",
+        acc:"",
       });
     }
     
@@ -47,9 +67,26 @@ class AddTodo extends Component {
       <div>
         <TextField
           label="Add New Item"
+          name="content"
           variant="outlined"
           onChange={this.handleChange}
           value={this.state.content}
+          data-testid="new-item-textfield"
+        />
+        <TextField 
+          label="Add Preconditions" 
+          name="pre"
+          variant="outlined"
+          onChange={this.handleChange}
+          value={this.state.pre}
+          data-testid="new-item-textfield"
+        />
+        <TextField
+          label="Add Criteria" 
+          name="acc"
+          variant="outlined"
+          onChange={this.handleChange}
+          value={this.state.acc}
           data-testid="new-item-textfield"
         />
         <Button
