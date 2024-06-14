@@ -20,13 +20,21 @@ class Home extends Component {
     // This solution works for a small application but a more complex hashing function should be used when
     // dealing with a larger data sensitive project.
     todo.id = Math.random();
-    
-    // Create a array that contains the current array and the new todo item
-    let new_list = [...this.state.todos, todo];
+
+    //todos is a list, so might be comparing the times/dates as well
+    //need to somehow access content of each element in the this.state.todos 
+    var temparr = this.state.todos.map((x) => x.content)
+    if(temparr.find(x => x === todo.content)){
+      return;
+    } else {
+      let new_list = [...this.state.todos, todo];
     // Update the local state with the new array.
-    this.setState({
-      todos: new_list,
-    });
+    // Create a array that contains the current array and the new todo item
+      this.setState({
+        todos: new_list,
+      });
+    }
+    
   };
 
   deleteTodo = (id) => {
