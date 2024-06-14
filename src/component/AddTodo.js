@@ -79,7 +79,6 @@ class AddTodo extends Component {
           variant="outlined"
           onChange={this.handleChange}
           value={this.state.pre}
-          data-testid="new-item-textfield"
         />
         <TextField
           label="Add Criteria" 
@@ -87,7 +86,6 @@ class AddTodo extends Component {
           variant="outlined"
           onChange={this.handleChange}
           value={this.state.acc}
-          data-testid="new-item-textfield"
         />
         <Button
           style={{ marginLeft: "10px" }}
