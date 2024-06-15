@@ -18,18 +18,18 @@ class AddTodo extends Component {
   // into the text field.
   handleChange = (event) => {
     let val = event.target.value;
-    let inpName = event.target.name;
-    if(inpName === 'content'){
+    let inputName = event.target.name;
+    if(inputName === 'content'){
       this.setState({
         content: val,
       });
     }
-    if(inpName === 'pre'){
+    if(inputName === 'pre'){
       this.setState({
         pre: val,
       });
     }
-    if(inpName === 'acc'){
+    if(inputName === 'acc'){
       this.setState({
         acc: val
       });

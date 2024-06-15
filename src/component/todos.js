@@ -2,7 +2,7 @@ import React from "react";
 import "../component/todos.css";
 import { Card, CardContent, Grid } from "@mui/material";
 import {ListItemButton, ListItemText} from "@mui/material";
-import {Checkbox} from "@mui/material";
+import {Checkbox, Typography, Rating} from "@mui/material";
 
 
 // 1. This component formats and returns the list of todos.
@@ -31,6 +31,8 @@ const Todos = ({ todos, deleteTodo, deleteAll }) => {
               </ListItemButton>
               <ListItemText id="sub" primary={["Preconditions: ", todo.pre]} />
               <ListItemText id="sub" primary={["Acceptance Criteria: ", todo.acc]}/>
+              <ListItemText id="sub" primary={["Importance: "]}> </ListItemText>  
+              <Rating name="importance" defaultValue={3}></Rating>
           </Card>
           
     
