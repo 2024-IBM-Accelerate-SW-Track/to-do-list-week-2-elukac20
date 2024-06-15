@@ -81,7 +81,7 @@ class AddTodo extends Component {
           value={this.state.pre}
         />
         <TextField
-          label="Add Criteria" 
+          label="Add Acceptance Criteria" 
           name="acc"
           variant="outlined"
           onChange={this.handleChange}
