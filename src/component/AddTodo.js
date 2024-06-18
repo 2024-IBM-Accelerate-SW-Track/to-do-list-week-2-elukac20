@@ -5,16 +5,37 @@ class AddTodo extends Component {
   // Create a local react state of the this component with a content property set to nothing.
   constructor() {
     super();
+    
     this.state = {
       content: "",
+      pre:"",
+      acc:"",
+      date:"",
     };
   }
   // The handleChange function updates the react state with the new input value provided from the user.
   // "event" is the defined action a user takes. In this case, the event is triggered when the user types something
   // into the text field.
   handleChange = (event) => {
+    let val = event.target.value;
+    let inputName = event.target.name;
+    if(inputName === 'content'){
+      this.setState({
+        content: val,
+      });
+    }
+    if(inputName === 'pre'){
+      this.setState({
+        pre: val,
+      });
+    }
+    if(inputName === 'acc'){
+      this.setState({
+        acc: val
+      });
+    }
     this.setState({
-      content: event.target.value,
+      date:Date().toLocaleString('en-US')
     });
   };
   // The handleSubmit function collects the forms input and puts it into the react state.
@@ -27,8 +48,12 @@ class AddTodo extends Component {
       this.props.addTodo(this.state);
       this.setState({
         content: "",
+        date:"",
+        pre:"",
+        acc:"",
       });
     }
+    
   };
   render() {
     return (
@@ -42,10 +67,25 @@ class AddTodo extends Component {
       <div>
         <TextField
           label="Add New Item"
+          name="content"
           variant="outlined"
           onChange={this.handleChange}
           value={this.state.content}
           data-testid="new-item-textfield"
+        />
+        <TextField 
+          label="Add Preconditions" 
+          name="pre"
+          variant="outlined"
+          onChange={this.handleChange}
+          value={this.state.pre}
+        />
+        <TextField
+          label="Add Acceptance Criteria" 
+          name="acc"
+          variant="outlined"
+          onChange={this.handleChange}
+          value={this.state.acc}
         />
         <Button
           style={{ marginLeft: "10px" }}
